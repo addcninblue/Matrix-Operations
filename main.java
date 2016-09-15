@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        //get matrix somehow
+        //get matrix somehow TODO
         int[][] matrix = new int[][] //test matrix
         {
             {3,42,43},
