@@ -7,7 +7,7 @@ public class main {
         System.out.print("Please input the " + size + " numbers inside your matrix, separated by a space. (without solution matrix) ");
         in.nextLine(); // clears the \n character from input stream -_____-
         String userInput = in.nextLine(); // gets the user's input in String form
-        int [][] matrix = getMatrix(userInput); //implement getMatrix() TODO
+        // int [][] matrix = getMatrix(userInput); //implement getMatrix() TODO
 
         int[][] matrix = new int[][] //testing matrix
         {
