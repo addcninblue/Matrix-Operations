@@ -16,7 +16,15 @@ public class main {
             {22,11,9,43},
             {0,1,19,3}
         };
-        System.out.println(Determinant(matrix));
+        //removed print because determinant function works so far
+        int[][] testSubmatrix = Submatrix(matrix, 2, 1); //testing Submatrix function
+        for(int i = 0; i< testSubmatrix.length; i++)
+        {
+            for(int k = 0; k< testSubmatrix[0].length;k++)
+            {
+                System.out.print(testSubmatrix[i][k] + " ");
+            }
+        }
     }
     /*static int[][] InverseMatrix(int[][] matrix)
     {
@@ -37,24 +45,27 @@ public class main {
                 int detTerm = matrix[0][i] * Determinant(submatrix(matrix,i));
                 if(i%2==0) {
                     det += detTerm;
-                } else {
+                }else{
                     det -= detTerm;
                 }
             }
         }
         return det;
     }
-
-    // returns submatrix of each matrix
-    static int[][] submatrix(int[][]matrix,int index){
+    static int[][] Submatrix(int[][]matrix, int ignoredRow, int ignoredColumn) 
+    {
         int subLength = matrix.length - 1; //length of submatrix
         int[][] submatrix = new int[subLength][subLength];
-        for(int row = 1; row < matrix.length; row++){
-            for(int column = 0; column < matrix.length; column++){
-                if(column < index) {
-                    submatrix[row-1][column] = matrix[row][column];
-                } else if(column > index) {
-                    submatrix[row-1][column-1] = matrix[row][column];
+        for(int row = 0; row < matrix.length; row++)
+        {
+            if(row == ignoredRow) continue;
+            int submatrixRow = row - ((row < ignoredRow) ? 0:1);
+            for(int column = 0; column < matrix.length; column++)
+            {
+                if(column < ignoredColumn){
+                    submatrix[submatrixRow][column] = matrix[row][column];
+                }else if(column > ignoredColumn){
+                    submatrix[submatrixRow][column-1] = matrix[row][column];
                 }
             }
         }
