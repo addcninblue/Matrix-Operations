@@ -4,7 +4,7 @@ public class main {
         Scanner in = new Scanner(System.in);
         System.out.print("Please input the number of rows in your matrix. ");
         int size = in.nextInt();
-        System.out.print("Please input the " + size + " numbers inside your matrix, separated by a space. (without solution matrix) ");
+        System.out.print("Please input the " + Math.pow(size, 2) + " numbers inside your matrix, separated by a space. (without solution matrix) ");
         in.nextLine(); // clears the \n character from input stream -_____-
         String userInput = in.nextLine(); // gets the user's input in String form
         // int [][] matrix = getMatrix(userInput); //implement getMatrix() TODO
@@ -16,7 +16,6 @@ public class main {
             {22,11,9,43},
             {0,1,19,3}
         };
-        //removed print because determinant function works so far
         int[][] testSubmatrix = Submatrix(matrix, 2, 1); //testing Submatrix function
         for(int i = 0; i< testSubmatrix.length; i++)
         {
@@ -42,7 +41,7 @@ public class main {
             det = matrix[0][0];
         } else { // side greater than 1
             for(int i = 0; i < side; i++) {
-                int detTerm = matrix[0][i] * Determinant(submatrix(matrix,i));
+                int detTerm = matrix[0][i] * Determinant(Submatrix(matrix,0,i));
                 if(i%2==0) {
                     det += detTerm;
                 }else{
