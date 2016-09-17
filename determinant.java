@@ -16,6 +16,28 @@ public class determinant {
         }
         return det;
     }
+    public double[][] Inverse(int[][]matrix)
+    {
+        int det = Determinant(matrix);
+        int[][] cofactor = new int[matrix.length][matrix.length];
+        for(int i = 0; i < matrix.length; i++)//cofactor matrix
+        {
+            for(int k = 0; k < matrix.length; k++)
+            {
+                int multiplier = ((i+k)%2 == 0) ? 1:-1; //sign of element
+                cofactor[i][k] = multiplier*(Determinant(Submatrix(matrix,i,k)));
+            }
+        }
+        double[][] inverse = new double[matrix.length][matrix.length];
+        for(int i = 0; i < matrix.length; i++) //adjoint * scalar of 1/det
+        {
+            for(int k = 0; k < matrix.length; k++)
+            {
+                inverse[i][k] = (1.0 / det)*cofactor[k][i];
+            }
+        }
+        return inverse;
+    }
     public int[][] Submatrix(int[][]matrix, int ignoredRow, int ignoredColumn) 
     {
         int subLength = matrix.length - 1; //length of submatrix
