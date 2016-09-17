@@ -5,7 +5,6 @@ public class main {
         double[][] inputMatrix = input.getUserMatrix(); //store's user's input as matrix
         double[] solutionsMatrix = input.getSolutionsMatrix(inputMatrix.length); // solutions matrix
         double[][] inverseMatrix = det.Inverse(inputMatrix);
-        // TODO: implement multiplication
         // print out finalMatrix (nicely)
         double[] finalMatrix = Multiplication(inverseMatrix, solutionsMatrix);
         for (int i = 0; i < finalMatrix.length; i++){ //rows
