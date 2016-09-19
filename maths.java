@@ -38,7 +38,7 @@ public class Maths {
         }
         return inverse;
     }
-    static double[][] Multiplication(double[][] matrix1, double[][]matrix2)
+    public static double[][] Multiplication(double[][] matrix1, double[][]matrix2)
     { //only for nxn multiplied by nx1
         //result = inverse*solutionsMatrix
         double[][] result = new double[matrix1.length][matrix2[0].length];
