@@ -4,10 +4,10 @@ public class main {
     public static void main(String[] args) {
         double[][] inputMatrix = input.getUserMatrix(); //store's user's input as matrix
         double[][] solutionsMatrix = input.getSolutionsMatrix(inputMatrix.length); // solutions matrix
-        double[][] inverseMatrix = maths.Inverse(inputMatrix);
+        double[][] inverseMatrix = Maths.Inverse(inputMatrix);
         // print out finalMatrix (nicely)
-        double[][] finalMatrix = Multiplication(inverseMatrix, solutionsMatrix);
-        System.out.print("â”Œ"); //matrix top
+        double[][] finalMatrix = Maths.Multiplication(inverseMatrix, solutionsMatrix);
+        System.out.print("["); //matrix top
         for (int i = 0; i < finalMatrix.length; i++){ //rows
             for (int j = 0; j <= finalMatrix.length; j++){ //columns
                 if(j < finalMatrix.length){ //coefficient column
@@ -26,38 +26,21 @@ public class main {
                     }
                     // System.out.print(finalMatrix[i]);
                     if(i == 0){
-                        System.out.println("â”�");
+                        System.out.println("]");
                     } else if (i== finalMatrix.length - 1){
-                        System.out.println("â”˜");
+                        System.out.println("]");
                     } else {
-                        System.out.println("â”‚");
+                        System.out.println("]");
                     }
                     if (i == finalMatrix.length - 2){
-                        System.out.print("â””");
+                        System.out.print("[");
                     }
                 }
             }
             if (i < finalMatrix.length - 2){
-                System.out.print("â”‚");
+                System.out.print("[");
             }
         }
         // end print
-    }
-    static double[][] Multiplication(double[][] matrix1, double[][]matrix2)
-    { //only for nxn multiplied by nx1
-        //result = inverse*solutionsMatrix
-        double[][] result = new double[matrix1.length][matrix2[0].length];
-        for(int i = 0; i < result.length; i++) // new matrix rows
-        {
-            for(int k = 0; k < result[0].length; k++) //new matrix columns
-            {
-                result[i][k] = 0;
-                for(int j = 0; j < matrix2.length; j++) //foreach row in 2/ column in 1 (same)
-                {
-                    result[i][k] += matrix1[i][j]*matrix2[j][k];
-                }
-            }
-        }
-        return result;
     }
 }

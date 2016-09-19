@@ -1,4 +1,4 @@
-public class maths {
+public class Maths {
     public static double Determinant(double[][] matrix) {
         double det = 0; //determinant
         int side = matrix.length; //side length of matrix
@@ -37,6 +37,23 @@ public class maths {
             }
         }
         return inverse;
+    }
+    static double[][] Multiplication(double[][] matrix1, double[][]matrix2)
+    { //only for nxn multiplied by nx1
+        //result = inverse*solutionsMatrix
+        double[][] result = new double[matrix1.length][matrix2[0].length];
+        for(int i = 0; i < result.length; i++) // new matrix rows
+        {
+            for(int k = 0; k < result[0].length; k++) //new matrix columns
+            {
+                result[i][k] = 0;
+                for(int j = 0; j < matrix2.length; j++) //foreach row in 2/ column in 1 (same)
+                {
+                    result[i][k] += matrix1[i][j]*matrix2[j][k];
+                }
+            }
+        }
+        return result;
     }
     public static double[][] Submatrix(double[][]matrix, int ignoredRow, int ignoredColumn) 
     {
