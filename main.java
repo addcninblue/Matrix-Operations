@@ -2,11 +2,9 @@ import java.text.NumberFormat;
 import java.text.DecimalFormat;
 public class main {
     public static void main(String[] args) {
-        determinant det = new determinant(); //imports the determinant class
-        input input = new input(); //class for getting user's input
         double[][] inputMatrix = input.getUserMatrix(); //store's user's input as matrix
         double[][] solutionsMatrix = input.getSolutionsMatrix(inputMatrix.length); // solutions matrix
-        double[][] inverseMatrix = det.Inverse(inputMatrix);
+        double[][] inverseMatrix = maths.Inverse(inputMatrix);
         // print out finalMatrix (nicely)
         double[][] finalMatrix = Multiplication(inverseMatrix, solutionsMatrix);
         System.out.print("â”Œ"); //matrix top
@@ -19,12 +17,12 @@ public class main {
                         System.out.print("0 ");
                     }
                 } else { // solution column
-                    if (finalMatrix[i] < 0){
+                    if (finalMatrix[i][0] < 0){
                         NumberFormat formatter = new DecimalFormat("#0.0");
-                        System.out.print(formatter.format(finalMatrix[i]));
+                        System.out.print(formatter.format(finalMatrix[i][0]));
                     } else {
                         NumberFormat formatter = new DecimalFormat("#0.00");
-                        System.out.print(formatter.format(finalMatrix[i]));
+                        System.out.print(formatter.format(finalMatrix[i][0]));
                     }
                     // System.out.print(finalMatrix[i]);
                     if(i == 0){

@@ -1,6 +1,6 @@
 import java.util.Scanner;
 public class input {
-    public double[][] getUserMatrix(){
+    public static double[][] getUserMatrix(){
         Scanner in = new Scanner(System.in);
 	    System.out.print("Please input the number of rows in your matrix. ");
         int size = in.nextInt();
@@ -20,12 +20,12 @@ public class input {
         //     }
         // }
     }
-    public double[][] getSolutionsMatrix(int size){
+    public static double[][] getSolutionsMatrix(int size){
         Scanner in = new Scanner(System.in);
         System.out.print("Please input the solutions matrix, separated by a space: ");
         double[][] solutionsMatrix = new double[size][1];
         for (int i = 0; i < size; i++){
-                solutionsMatrix[i][1] = in.nextDouble();
+                solutionsMatrix[i][0] = in.nextDouble();
         }
         
         return solutionsMatrix;
