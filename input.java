@@ -20,12 +20,12 @@ public class input {
         //     }
         // }
     }
-    public double[] getSolutionsMatrix(int size){
+    public double[][] getSolutionsMatrix(int size){
         Scanner in = new Scanner(System.in);
         System.out.print("Please input the solutions matrix, separated by a space: ");
-        double[] solutionsMatrix = new double[size];
+        double[][] solutionsMatrix = new double[size][1];
         for (int i = 0; i < size; i++){
-                solutionsMatrix[i] = in.nextDouble();
+                solutionsMatrix[i][1] = in.nextDouble();
         }
         
         return solutionsMatrix;
