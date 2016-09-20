@@ -53,7 +53,10 @@ public final class output {
                         System.out.print("\u2502"); //matrix middle │
                     }
                 }
-                System.out.print(matrix[row][column] + " ");
+                System.out.print(matrix[row][column]);
+                if (column != columns - 1) {
+                    System.out.print(" ");
+                }
                 if (column == columns - 1){
                     if (row == 0){
                         System.out.println("\u2510"); // 

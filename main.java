@@ -1,5 +1,3 @@
-import java.text.NumberFormat;
-import java.text.DecimalFormat;
 public class main {
     public static void main(String[] args) {
         double[][] inputMatrix = input.getUserMatrix(); //store's user's input as matrix
