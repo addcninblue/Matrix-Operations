@@ -1,39 +1,39 @@
 import java.text.NumberFormat;
 import java.text.DecimalFormat;
 public final class output {
-    public static void rowReducedEchelon(double[] finalMatrix){
+    public static void rowReducedEchelon(double[][] finalMatrix){
         // print out finalMatrix (nicely)
         System.out.print("┌"); //matrix top
-        for (int i = 0; i < finalMatrix.length; i++){ //rows
-            for (int j = 0; j <= finalMatrix.length; j++){ //columns
-                if(j < finalMatrix.length){ //coefficient column
+        for (int i = 0; i < finalMatrix[0].length; i++){ //rows
+            for (int j = 0; j <= finalMatrix[0].length; j++){ //columns
+                if(j < finalMatrix[0].length){ //coefficient column
                     if(i == j){
                         System.out.print("1 ");
                     } else {
                         System.out.print("0 ");
                     }
                 } else { // solution column
-                    if (finalMatrix[i] < 0){
+                    if (finalMatrix[0][i] < 0){
                         NumberFormat formatter = new DecimalFormat("#0.0");
-                        System.out.print(formatter.format(finalMatrix[i]));
+                        System.out.print(formatter.format(finalMatrix[0][i]));
                     } else {
                         NumberFormat formatter = new DecimalFormat("#0.00");
-                        System.out.print(formatter.format(finalMatrix[i]));
+                        System.out.print(formatter.format(finalMatrix[0][i]));
                     }
-                    // System.out.print(finalMatrix[i]);
+                    // System.out.print(finalMatrix[0][i]);
                     if(i == 0){
                         System.out.println("┐");
-                    } else if (i== finalMatrix.length - 1){
+                    } else if (i== finalMatrix[0].length - 1){
                         System.out.println("┘");
                     } else {
                         System.out.println("│");
                     }
-                    if (i == finalMatrix.length - 2){
+                    if (i == finalMatrix[0].length - 2){
                         System.out.print("└");
                     }
                 }
             }
-            if (i < finalMatrix.length - 2){
+            if (i < finalMatrix[0].length - 2){
                 System.out.print("│");
             }
         }

@@ -1,4 +1,4 @@
-public class Maths {
+public final class maths {
     public static double Determinant(double[][] matrix) {
         double det = 0; //determinant
         int side = matrix.length; //side length of matrix
