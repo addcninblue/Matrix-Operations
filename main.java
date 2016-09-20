@@ -7,7 +7,7 @@ public class main {
         double[][] inverseMatrix = Maths.Inverse(inputMatrix);
         // print out finalMatrix (nicely)
         double[][] finalMatrix = Maths.Multiplication(inverseMatrix, solutionsMatrix);
-        System.out.print("["); //matrix top
+        System.out.print("\u250C"); //matrix top
         for (int i = 0; i < finalMatrix.length; i++){ //rows
             for (int j = 0; j <= finalMatrix.length; j++){ //columns
                 if(j < finalMatrix.length){ //coefficient column
@@ -26,19 +26,19 @@ public class main {
                     }
                     // System.out.print(finalMatrix[i]);
                     if(i == 0){
-                        System.out.println("]");
+                        System.out.println("\u2510");
                     } else if (i== finalMatrix.length - 1){
-                        System.out.println("]");
+                        System.out.println("\u2518");
                     } else {
-                        System.out.println("]");
+                        System.out.println("\u2502");
                     }
                     if (i == finalMatrix.length - 2){
-                        System.out.print("[");
+                        System.out.print("\u2514");
                     }
                 }
             }
             if (i < finalMatrix.length - 2){
-                System.out.print("[");
+                System.out.print("\u2502");
             }
         }
         // end print
