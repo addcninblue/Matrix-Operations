@@ -1,5 +1,5 @@
-public class determinant {
-    public double Determinant(double[][] matrix) {
+public class Maths {
+    public static double Determinant(double[][] matrix) {
         double det = 0; //determinant
         int side = matrix.length; //side length of matrix
         if(side==1) {
@@ -16,7 +16,7 @@ public class determinant {
         }
         return det;
     }
-    public double[][] Inverse(double[][]matrix)
+    public static double[][] Inverse(double[][]matrix)
     {
         double det = Determinant(matrix);
         double[][] cofactor = new double[matrix.length][matrix.length];
@@ -38,7 +38,24 @@ public class determinant {
         }
         return inverse;
     }
-    public double[][] Submatrix(double[][]matrix, int ignoredRow, int ignoredColumn) 
+    public static double[][] Multiplication(double[][] matrix1, double[][]matrix2)
+    { //only for nxn multiplied by nx1
+        //result = inverse*solutionsMatrix
+        double[][] result = new double[matrix1.length][matrix2[0].length];
+        for(int i = 0; i < result.length; i++) // new matrix rows
+        {
+            for(int k = 0; k < result[0].length; k++) //new matrix columns
+            {
+                result[i][k] = 0;
+                for(int j = 0; j < matrix2.length; j++) //foreach row in 2/ column in 1 (same)
+                {
+                    result[i][k] += matrix1[i][j]*matrix2[j][k];
+                }
+            }
+        }
+        return result;
+    }
+    public static double[][] Submatrix(double[][]matrix, int ignoredRow, int ignoredColumn) 
     {
         int subLength = matrix.length - 1; //length of submatrix
         double[][] submatrix = new double[subLength][subLength];
