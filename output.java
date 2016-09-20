@@ -3,7 +3,7 @@ import java.text.DecimalFormat;
 public final class output {
     public static void rowReducedEchelon(double[][] finalMatrix){
         // print out finalMatrix (nicely)
-        System.out.print("┌"); //matrix top
+        System.out.print("\u250C"); //matrix top
         for (int i = 0; i < finalMatrix[0].length; i++){ //rows
             for (int j = 0; j <= finalMatrix[0].length; j++){ //columns
                 if(j < finalMatrix[0].length){ //coefficient column
@@ -22,19 +22,19 @@ public final class output {
                     }
                     // System.out.print(finalMatrix[0][i]);
                     if(i == 0){
-                        System.out.println("┐");
+                        System.out.println("\u2510"); //┐
                     } else if (i== finalMatrix[0].length - 1){
-                        System.out.println("┘");
+                        System.out.println("\u2518"); //┘
                     } else {
-                        System.out.println("│");
+                        System.out.println("\u2502"); //│
                     }
                     if (i == finalMatrix[0].length - 2){
-                        System.out.print("└");
+                        System.out.print("\u2514"); //└
                     }
                 }
             }
             if (i < finalMatrix[0].length - 2){
-                System.out.print("│");
+                System.out.print("\u2502"); //│
             }
         }
         // end print
@@ -46,21 +46,21 @@ public final class output {
             for(int column = 0; column < matrix[0].length ; column++){
                 if (column == 0){ //start of column
                     if (row == 0){
-                        System.out.print("┌"); //matrix top
+                        System.out.print("\u250C"); //matrix top ┌
                     } else if (row == rows-1){
-                        System.out.print("└"); //matrix bottom
+                        System.out.print("\u2514"); //matrix bottom └
                     } else {
-                        System.out.print("│"); //matrix middle
+                        System.out.print("\u2502"); //matrix middle │
                     }
                 }
                 System.out.print(matrix[row][column] + " ");
                 if (column == columns - 1){
                     if (row == 0){
-                        System.out.println("┐");
+                        System.out.println("\u2510"); // 
                     } else if (row == rows-1){
-                        System.out.println("┘");
+                        System.out.println("\u2518"); // ┘
                     } else {
-                        System.out.println("│");
+                        System.out.println("\u2502"); // │
                     }
                 }
             }
