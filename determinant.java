@@ -1,5 +1,5 @@
-public class determinant {
-    public double Determinant(double[][] matrix) {
+public final class determinant {
+    public static double Determinant(double[][] matrix) {
         double det = 0; //determinant
         int side = matrix.length; //side length of matrix
         if(side==1) {
@@ -16,7 +16,7 @@ public class determinant {
         }
         return det;
     }
-    public double[][] Inverse(double[][]matrix)
+    public static double[][] Inverse(double[][]matrix)
     {
         double det = Determinant(matrix);
         double[][] cofactor = new double[matrix.length][matrix.length];
@@ -38,7 +38,7 @@ public class determinant {
         }
         return inverse;
     }
-    public double[][] Submatrix(double[][]matrix, int ignoredRow, int ignoredColumn) 
+    public static double[][] Submatrix(double[][]matrix, int ignoredRow, int ignoredColumn) 
     {
         int subLength = matrix.length - 1; //length of submatrix
         double[][] submatrix = new double[subLength][subLength];
