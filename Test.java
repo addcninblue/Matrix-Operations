@@ -33,10 +33,6 @@ public class Test
                 {
                     double temp = multiplier*matrix[i][j]; //copy the matrix over//multiply elements
                     matrix[k][j] -= temp; //subtract
-                    System.out.print(multiplier +" ");
-                    System.out.print(matrix[i][j] + " ");
-                    System.out.print(temp+" ");
-                    System.out.println();
                 }
             }
         }
