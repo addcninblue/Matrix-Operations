@@ -1,27 +1,10 @@
-public class Test
+
+public class RREF
 {
-    public static void main(String[] args)
-    {
-        double[][] testMatrix = 
-        {
-            {1,1,1,5},
-            {4,0,5,2},
-            {2,3,0,8}
-        };
-        double[][] matrix = RREF(testMatrix);
-        for(double[] row:matrix)
-        {
-            for(double item:row)
-            {
-                System.out.print(Math.round(100.0*item)/100.0 + " ");
-            }
-            System.out.println();
-        }
-    }
-    static double[][] RREF(double[][] matrix)
+    public static double[][] RREF(double[][] matrix)
     {
         matrix = RREFOrganize(matrix); 
-        for(int i = 0; i < matrix.length; i++) //"pivot" element index
+        for(int i = 0; i < matrix.length; i++) //"pivot" element index [i][i]
         {
            if(matrix[i][i] == 0) continue; 
             for(int k = 0; k < matrix.length; k++) //going through each row
@@ -40,7 +23,7 @@ public class Test
             int firstNonZeroIndex = -1;
             for(int k = 0; k < matrix[i].length - 1; k++) //get first non zero in row
             {
-                if(Math.abs(matrix[i][k]) > 0.00000001){ //double precision
+                if(Math.abs(matrix[i][k]) >= 0.00000001){ //double precision
                     firstNonZeroIndex = k;
                     break;
                 }
@@ -52,6 +35,7 @@ public class Test
                 matrix[i][k] /= matrix[i][firstNonZeroIndex];
             }
         }
+        matrix = RREFZeroRowsDown(matrix);
         return matrix;
     }
     static double[][] RREFOrganize(double[][] matrix) //works so far
@@ -59,22 +43,45 @@ public class Test
         for(int i = 0; i < matrix.length; i++) //going through each row
         {
             if(matrix[i][i] != 0) continue;
-            for(int k = 0; k < i; k++) //going through each column in the row before i
+            for(int k = 0; k < i; k++) //going through each column in the rows before i
             {
-                if(matrix[i][k] == 0) continue;
+                if((matrix[i][k] == 0 && matrix[k][k] != 0)|| matrix[k][i] == 0) continue;
                 double[] temp = matrix[k]; //swap the rows
                 matrix[k] = matrix[i];
                 matrix[i] = temp;
                 break;
             }
             if(matrix[i][i] != 0) continue;
-            for(int k = i + 1; k < matrix.length; k++) //going through each row below
+            for(int k = i + 1; k < matrix.length; k++) //going through each row below i
             {
                 if(matrix[k][i] == 0) continue;
                 double[] temp = matrix[k];
                 matrix[k] = matrix[i];
-                matrix[i] = matrix[k];
+                matrix[i] = temp;
                 break;
+            }
+        }
+        return matrix;
+    }
+    static double[][] RREFZeroRowsDown(double[][] matrix)
+    {
+        for(int i = 0; i < matrix.length; i++) //going through the rows
+        {
+            boolean isZeroRow = true;
+            for(int k = 0; k < matrix[0].length - 1; k++) //going through row's variable coefficients
+            { //columns
+                if(matrix[i][k] >= 0.00000001){ //double precision
+                    isZeroRow = false;
+                    break;
+                }
+            }
+            if(isZeroRow){
+                for(int k = i + 1; k < matrix.length; k++) //doesn't disturb order of below rows
+                {
+                    double[] temp = matrix[k - 1];
+                    matrix[k - 1] = matrix[k];
+                    matrix[k] = temp;
+                }
             }
         }
         return matrix;
