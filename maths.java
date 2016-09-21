@@ -138,7 +138,7 @@ public final class maths {
             boolean isZeroRow = true;
             for(int k = 0; k < matrix[0].length - 1; k++) //going through row's variable coefficients
             { //columns
-                if(matrix[i][k] >= 0.00000001){ //double precision
+                if(Math.abs(matrix[i][k]) >= 0.00000001){ //double precision
                     isZeroRow = false;
                     break;
                 }
@@ -153,25 +153,25 @@ public final class maths {
                 }
             }
         }
-	//checking zero rows if zero row has nonzero solution 
-	int firstZeroRowIndex = matrix.length - zeroRowCount; //no error bc if i = 0, loop doesn't run
-	for(int i = matrix.length - 1; i >= firstZeroRowIndex; i--)
-	{
-		if(matrix[i][matrix[0].length - 1] >= 0.00000001){
-			for(int k = i; k - 1 >= firstZeroRowIndex; k--)
-			{
-				double[] temp = matrix[k];
-				matrix[k] = matrix[k - 1];
-				matrix[k - 1] = temp;
-			}
-			matrix[firstZeroRowIndex][matrix[0].length - 1] = 1; //set first non zero solution to 1
-			for(int k = 0; k < matrix.length; k++)
-			{
-				if(k == firstZeroRowIndex) continue;
-				matrix[k][matrix[0].length - 1] = 0;
+		//checking zero rows if zero row has nonzero solution 
+		int firstZeroRowIndex = matrix.length - zeroRowCount; //no error bc if i = 0, loop doesn't run
+		for(int i = matrix.length - 1; i >= firstZeroRowIndex; i--)
+		{
+			if(Math.abs(matrix[i][matrix[0].length - 1]) >= 0.00000001){
+				for(int k = i; k - 1 >= firstZeroRowIndex; k--)
+				{
+					double[] temp = matrix[k];
+					matrix[k] = matrix[k - 1];
+					matrix[k - 1] = temp;
+				}
+				matrix[firstZeroRowIndex][matrix[0].length - 1] = 1; //set first non zero solution to 1
+				for(int k = 0; k < matrix.length; k++)
+				{
+					if(k == firstZeroRowIndex) continue;
+					matrix[k][matrix[0].length - 1] = 0;
+				}
 			}
 		}
-	}
         return matrix;
     }
     public static double[][] ScalarMultiplication(int multiplier, double[][]matrix){
