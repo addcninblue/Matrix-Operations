@@ -66,6 +66,16 @@ public final class maths {
         }
         return result;
     }
+    public static double[][] ScalarMultiplication(int multiplier, double[][]matrix){
+        int rows = matrix.length;
+        int columns = matrix[0].length;
+        for(int row = 0; row < rows; row++){
+            for(int column = 0; column < columns; column++){
+                matrix[row][column] = multiplier * matrix[row][column];
+            }
+        }
+        return matrix;
+    }
     public static double[][] Submatrix(double[][]matrix, int ignoredRow, int ignoredColumn) 
     {
         int subLength = matrix.length - 1; //length of submatrix
