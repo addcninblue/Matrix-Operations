@@ -1,5 +1,5 @@
 public final class maths {
-    public static double Addition(double[][] first, double[][] second){
+    public static double[][] Addition(double[][] first, double[][] second){
         int rows = first.length;
         int columns = first[0].length;
         double[][] output = new double[rows][columns];

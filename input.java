@@ -1,6 +1,6 @@
 import java.util.Scanner;
 public final class input {
-    public static double[][] getUserMatrix(size){
+    public static double[][] getUserMatrix(){
         Scanner in = new Scanner(System.in);
 	    System.out.print("Please input the number of rows in your matrix: ");
         int size = in.nextInt();
