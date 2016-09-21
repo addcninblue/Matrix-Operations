@@ -1,5 +1,5 @@
 
-public class RREF
+public class rref
 {
     public static double[][] RREF(double[][] matrix)
     {
