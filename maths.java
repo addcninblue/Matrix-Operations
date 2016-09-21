@@ -131,6 +131,8 @@ public final class maths {
     }
     static double[][] RREFZeroRowsDown(double[][] matrix)
     {
+		//checking for rows of zero coefficents
+		int zeroRowCount = 0;
         for(int i = 0; i < matrix.length; i++) //going through the rows
         {
             boolean isZeroRow = true;
@@ -142,6 +144,7 @@ public final class maths {
                 }
             }
             if(isZeroRow){
+				zeroRowCount++;
                 for(int k = i + 1; k < matrix.length; k++) //doesn't disturb order of below rows
                 {
                     double[] temp = matrix[k - 1];
@@ -150,6 +153,25 @@ public final class maths {
                 }
             }
         }
+	//checking zero rows if zero row has nonzero solution 
+	int firstZeroRowIndex = matrix.length - zeroRowCount; //no error bc if i = 0, loop doesn't run
+	for(int i = matrix.length - 1; i >= firstZeroRowIndex; i--)
+	{
+		if(matrix[i][matrix[0].length - 1] >= 0.00000001){
+			for(int k = i; k - 1 >= firstZeroRowIndex; k--)
+			{
+				double[] temp = matrix[k];
+				matrix[k] = matrix[k - 1];
+				matrix[k - 1] = temp;
+			}
+			matrix[firstZeroRowIndex][matrix[0].length - 1] = 1; //set first non zero solution to 1
+			for(int k = 0; k < matrix.length; k++)
+			{
+				if(k == firstZeroRowIndex) continue;
+				matrix[k][matrix[0].length - 1] = 0;
+			}
+		}
+	}
         return matrix;
     }
     public static double[][] ScalarMultiplication(int multiplier, double[][]matrix){
