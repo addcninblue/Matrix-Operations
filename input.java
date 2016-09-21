@@ -4,8 +4,9 @@ public final class input {
         Scanner in = new Scanner(System.in);
         double[][] userInputMatrix = new double[rows][columns];
         while (true){
-            System.out.print("Please input the " + (rows * columns) + " numbers inside your matrix, separated by a space. (without solution matrix) ");
+            // System.out.print("Please input the " + (rows * columns) + " numbers inside your matrix, separated by a space. (without solution matrix) ");
             for (int row = 0; row < rows; row++){
+                System.out.print("Please input the first " + columns + " numbers, separated by a space: ");
                 for (int column = 0; column < columns; column++){
                     userInputMatrix[row][column] = in.nextDouble();
                 }
