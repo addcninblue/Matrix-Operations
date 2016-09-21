@@ -1,4 +1,3 @@
-
 public class Test
 {
     public static void main(String[] args)
@@ -47,8 +46,9 @@ public class Test
                 }
             }
             if(firstNonZeroIndex == -1) continue; //is zero row
-            for(int k = firstNonZeroIndex; k < matrix[i].length; k++) //divide
+            for(int k = matrix[i].length - 1; k >= firstNonZeroIndex; k--) //divide
             {
+               // if(k == matrix[i].length - 1) System.out.println(matrix[i][k]);
                 matrix[i][k] /= matrix[i][firstNonZeroIndex];
             }
         }
