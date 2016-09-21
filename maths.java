@@ -1,4 +1,15 @@
 public final class maths {
+    public static double[][] Addition(double[][] first, double[][] second){
+        int rows = first.length;
+        int columns = first[0].length;
+        double[][] output = new double[rows][columns];
+        for(int row = 0; row < rows; row++){
+            for(int column = 0; column < columns; column++){
+                output[row][column] = first[row][column] + second[row][column];
+            }
+        }
+        return output;
+    }
     public static double Determinant(double[][] matrix) {
         double det = 0; //determinant
         int side = matrix.length; //side length of matrix
@@ -54,6 +65,16 @@ public final class maths {
             }
         }
         return result;
+    }
+    public static double[][] ScalarMultiplication(int multiplier, double[][]matrix){
+        int rows = matrix.length;
+        int columns = matrix[0].length;
+        for(int row = 0; row < rows; row++){
+            for(int column = 0; column < columns; column++){
+                matrix[row][column] = multiplier * matrix[row][column];
+            }
+        }
+        return matrix;
     }
     public static double[][] Submatrix(double[][]matrix, int ignoredRow, int ignoredColumn) 
     {
