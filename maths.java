@@ -66,6 +66,131 @@ public final class maths {
         }
         return result;
     }
+	
+    public static double[][] RREF(double[][] matrix)
+    {
+        //matrix = RREFOrganize(matrix); 
+        for(int i = 0; i < matrix.length; i++) //"pivot" element index [i][i]
+        {
+			matrix = RREFOrganize(matrix); 
+           if(matrix[i][i] == 0) continue; 
+            for(int k = 0; k < matrix.length; k++) //going through each row
+            {
+                if(k == i) continue;
+                double multiplier = matrix[k][i] / matrix[i][i];
+                for(int j = 0; j < matrix[i].length; j++) //columns
+                {
+                    double temp = multiplier*matrix[i][j]; //copy the matrix over//multiply elements
+                    matrix[k][j] -= temp; //subtract
+                }
+				//output.printMatrix(matrix);
+            }
+        }
+        for(int i = 0; i < matrix.length; i++) //rows//divide by first nonzero for RREF
+        { //this is fine so far
+            int firstNonZeroIndex = -1;
+            for(int k = 0; k < matrix[i].length - 1; k++) //get first non zero in row
+            {
+                if(Math.abs(matrix[i][k]) >= 0.00000001){ //double precision
+                    firstNonZeroIndex = k;
+                    break;
+                }
+            }
+            if(firstNonZeroIndex == -1) continue; //is zero row
+            for(int k = matrix[i].length - 1; k >= firstNonZeroIndex; k--) //divide
+            {
+               // if(k == matrix[i].length - 1) System.out.println(matrix[i][k]);
+                matrix[i][k] /= matrix[i][firstNonZeroIndex];
+            }
+        }
+		//System.out.println(matrix[2][2]);
+        matrix = RREFZeroRowsDown(matrix);
+        return matrix;
+    }
+    static double[][] RREFOrganize(double[][] matrix) //works so far
+    {
+        for(int i = 0; i < matrix.length; i++) //going through each row
+        {
+            if(Math.abs(matrix[i][i]) >= 0.00000001) continue;
+            for(int k = 0; k < i; k++) //going through each column in the rows before i
+            {
+                if((Math.abs(matrix[i][k]) <= 0.00000001 && 
+				Math.abs(matrix[k][k]) >= 0.00000001)|| Math.abs(matrix[k][i]) == 0) continue;
+                double[] temp = matrix[k]; //swap the rows
+                matrix[k] = matrix[i];
+                matrix[i] = temp;
+                break;
+            }
+            if(Math.abs(matrix[i][i]) >= 0.00000001) continue;
+            for(int k = i + 1; k < matrix.length; k++) //going through each row below i
+            {
+                if(Math.abs(matrix[k][i]) <= 0.00000001) continue;
+                double[] temp = matrix[k];
+                matrix[k] = matrix[i];
+                matrix[i] = temp;
+                break;
+            }
+        }
+        return matrix;
+    }
+    static double[][] RREFZeroRowsDown(double[][] matrix)
+    {
+		//checking for rows of zero coefficents
+		int zeroRowCount = 0;
+        for(int i = matrix.length - 1; i >= 0; i--) //going through the rows
+        {
+            boolean isZeroRow = true;
+            for(int k = 0; k < matrix[0].length - 1; k++) //going through row's variable coefficients
+            { //columns
+                if(Math.abs(matrix[i][k]) >= 0.00000001){ //double precision
+				//System.out.print(i); // here
+                    isZeroRow = false;
+                    break;
+                }
+		/*		if(i == 2)
+				{
+					System.out.println(matrix[i][k]);
+					System.out.println(Math.abs(matrix[i][k]));
+				}*/
+            }
+            if(isZeroRow){
+				zeroRowCount++;
+				//System.out.println(i);
+				//System.out.println(zeroRowCount);
+                for(int k = i + 1; k < matrix.length; k++) //doesn't disturb order of below rows
+                {
+                    double[] temp = matrix[k - 1];
+                    matrix[k - 1] = matrix[k];
+                    matrix[k] = temp;
+                }
+            }
+        }
+		//System.out.println(zeroRowCount);
+		//checking zero rows if zero row has nonzero solution 
+		int firstZeroRowIndex = matrix.length - zeroRowCount; //no error bc if i = 0, loop doesn't run
+		for(int i = matrix.length - 1; i >= firstZeroRowIndex; i--)
+		{
+			//output.printMatrix(matrix);
+			if(Math.abs(matrix[i][matrix[0].length - 1]) >= 0.00000001){
+				for(int k = i; k - 1 >= firstZeroRowIndex; k--)
+				{
+					double[] temp = matrix[k];
+					matrix[k] = matrix[k - 1];
+					matrix[k - 1] = temp;
+				}
+				//output.printMatrix(matrix);
+				matrix[firstZeroRowIndex][matrix[0].length - 1] = 1; //set first non zero solution to 1
+				for(int k = 0; k < matrix.length; k++)
+				{
+					if(k == firstZeroRowIndex) continue;
+					matrix[k][matrix[0].length - 1] = 0;
+				}
+				break;
+			}
+		}
+		//matrix = RREFOrganize(matrix);
+        return matrix;
+    }
     public static double[][] ScalarMultiplication(int multiplier, double[][]matrix){
         int rows = matrix.length;
         int columns = matrix[0].length;

@@ -6,7 +6,11 @@ public final class input {
         while (true){
             // System.out.print("Please input the " + (rows * columns) + " numbers inside your matrix, separated by a space. (without solution matrix) ");
             for (int row = 0; row < rows; row++){
-                System.out.print("Please input the first " + columns + " numbers, separated by a space: ");
+                if(columns == 1){
+                    System.out.print("Please input " + columns + " number in row " + (row + 1) + ", separated by a space: ");
+                } else {
+                    System.out.print("Please input " + columns + " numbers in row " + (row + 1) + ", separated by a space: ");
+                }
                 for (int column = 0; column < columns; column++){
                     userInputMatrix[row][column] = in.nextDouble();
                 }

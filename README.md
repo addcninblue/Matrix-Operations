@@ -3,10 +3,15 @@
 ## Features
 This program can handle several matrix operations.
 It can compute:
+
 1. Scalar Multiplication
+
 2. Addition / Subtraction
+
 3. Determinant
+
 4. Multiplication
+
 5. Gauss-Jordan Elimination
 
 ## Methodology
@@ -21,3 +26,21 @@ This program first takes the input of the user's matrix. Then, it calculates the
 
 ## Installation
 To install, simply clone the respoitory, compile the java files, and run java main.
+Ensure that javac is in your $PATH.
+
+Clone the file:
+```
+git clone https://github.com/addcninblue/Matrix-Operations.git
+```
+To compile:
+```
+javac -encoding "UTF-8" -classpath . *.java
+```
+Execute:
+```
+java main
+```
+
+##Authors
+Addison Chan
+Daniel Phan
