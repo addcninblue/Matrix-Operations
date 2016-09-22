@@ -12,33 +12,41 @@
 import java.util.Scanner;
 public class main {
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-	    System.out.println("1. Scalar Multiplication");
-        System.out.println("2. Addition / Subtraction");
-        System.out.println("3. Find determinant");
-        System.out.println("4. Multiplication");
-        System.out.println("5. Gauss-Jordan Elimination");
-        System.out.print("Please choose one: ");
-        int userInput = in.nextInt();
-        switch(userInput){
-            case(1): // Scalar Multiplication
-                scalarMultiplication();
+        while(true){
+            Scanner in = new Scanner(System.in);
+            System.out.println("1. Scalar Multiplication");
+            System.out.println("2. Addition / Subtraction");
+            System.out.println("3. Find determinant");
+            System.out.println("4. Multiplication");
+            System.out.println("5. Gauss-Jordan Elimination");
+            System.out.print("Please choose one: ");
+            int userInput = in.nextInt();
+            switch(userInput){
+                case(1): // Scalar Multiplication
+                    scalarMultiplication();
+                    break;
+                case(2): // Addition / Subtraction
+                    addition();
+                    break;
+                case(3): // Determinant
+                    determinant();
+                    break;
+                case(4): // Multiplication
+                    multiplication();
+                    break;
+                case(5): // Gauss-Jordan
+                    rowReducedEchelon();
+                    break;
+                default: 
+                    break;
+                    // System.out.print("Thanks for using our program!");
+            }
+            in.nextLine();
+            System.out.print("Would you like to continue? \ny/n: ");
+            String yesNo = in.nextLine();
+            if (yesNo.equalsIgnoreCase("y")){
                 break;
-            case(2): // Addition / Subtraction
-                addition();
-                break;
-            case(3): // Determinant
-                determinant();
-                break;
-            case(4): // Multiplication
-                multiplication();
-                break;
-            case(5): // Gauss-Jordan
-                rowReducedEchelon();
-                break;
-            default: 
-                break;
-        // System.out.print("Thanks for using our program!");
+            }
         }
     }
 
@@ -79,29 +87,29 @@ public class main {
         output.printMatrix(finalMatrix);
     }
 
-    public static void determinant(){
+    public static void determinant(){ //3
         Scanner in = new Scanner(System.in);
 	    System.out.print("Please input the number of rows in your matrix: ");
         int rows = in.nextInt();
-	    System.out.print("Please input the number of columns in your matrix: ");
-        int columns = in.nextInt();
         in.nextLine(); // clears the \n character from input stream -_____-
-        double[][] matrix = input.getUserMatrix(rows, columns); //store's user's input as matrix
+        double[][] matrix = input.getUserMatrix(rows, rows); //store's user's input as matrix
         double determinant = maths.Determinant(matrix);
         System.out.println("The determinant was " + determinant);
     }
 
-    public static void multiplication(){
+    public static void multiplication(){ //4
         Scanner in = new Scanner(System.in);
 	    System.out.print("Please input the number of rows in your matrix: ");
         int rows = in.nextInt();
 	    System.out.print("Please input the number of columns in your matrix: ");
         int columns = in.nextInt();
+	    System.out.print("Please input the number of columns in your second matrix: ");
+        int columnsSecond = in.nextInt();
         in.nextLine(); // clears the \n character from input stream -_____-
         System.out.println("For the first matrix:");
         double[][] firstMatrix = input.getUserMatrix(columns, rows); //store's user's input as matrix
         System.out.println("For the second matrix:");
-        double[][] secondMatrix = input.getUserMatrix(rows, columns); // solutions matrix
+        double[][] secondMatrix = input.getUserMatrix(rows, columnsSecond); // solutions matrix
         double[][] finalMatrix = maths.Multiplication(firstMatrix, secondMatrix);
         System.out.println("This is the result:");
         output.printMatrix(finalMatrix);
