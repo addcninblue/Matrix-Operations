@@ -44,7 +44,7 @@ public class main {
             in.nextLine();
             System.out.print("Would you like to continue? \ny/n: ");
             String yesNo = in.nextLine();
-            if (yesNo.equalsIgnoreCase("y")){
+            if (yesNo.equalsIgnoreCase("n")){
                 break;
             }
         }

@@ -69,9 +69,10 @@ public final class maths {
 	
     public static double[][] RREF(double[][] matrix)
     {
-        matrix = RREFOrganize(matrix); 
+        //matrix = RREFOrganize(matrix); 
         for(int i = 0; i < matrix.length; i++) //"pivot" element index [i][i]
         {
+			matrix = RREFOrganize(matrix); 
            if(matrix[i][i] == 0) continue; 
             for(int k = 0; k < matrix.length; k++) //going through each row
             {
@@ -82,6 +83,7 @@ public final class maths {
                     double temp = multiplier*matrix[i][j]; //copy the matrix over//multiply elements
                     matrix[k][j] -= temp; //subtract
                 }
+				//output.printMatrix(matrix);
             }
         }
         for(int i = 0; i < matrix.length; i++) //rows//divide by first nonzero for RREF
@@ -108,19 +110,20 @@ public final class maths {
     {
         for(int i = 0; i < matrix.length; i++) //going through each row
         {
-            if(matrix[i][i] != 0) continue;
+            if(Math.abs(matrix[i][i]) >= 0.00000001) continue;
             for(int k = 0; k < i; k++) //going through each column in the rows before i
             {
-                if((matrix[i][k] == 0 && matrix[k][k] != 0)|| matrix[k][i] == 0) continue;
+                if((Math.abs(matrix[i][k]) <= 0.00000001 && 
+				Math.abs(matrix[k][k]) >= 0.00000001)|| Math.abs(matrix[k][i]) == 0) continue;
                 double[] temp = matrix[k]; //swap the rows
                 matrix[k] = matrix[i];
                 matrix[i] = temp;
                 break;
             }
-            if(matrix[i][i] != 0) continue;
+            if(Math.abs(matrix[i][i]) >= 0.00000001) continue;
             for(int k = i + 1; k < matrix.length; k++) //going through each row below i
             {
-                if(matrix[k][i] == 0) continue;
+                if(Math.abs(matrix[k][i]) <= 0.00000001) continue;
                 double[] temp = matrix[k];
                 matrix[k] = matrix[i];
                 matrix[i] = temp;
@@ -170,8 +173,10 @@ public final class maths {
 					if(k == firstZeroRowIndex) continue;
 					matrix[k][matrix[0].length - 1] = 0;
 				}
+				break;
 			}
 		}
+		matrix = RREFOrganize(matrix);
         return matrix;
     }
     public static double[][] ScalarMultiplication(int multiplier, double[][]matrix){
