@@ -120,6 +120,19 @@ public class main {
 	    System.out.print("Please input the number of rows in your matrix: ");
         int size = in.nextInt();
         in.nextLine(); // clears the \n character from input stream -_____-
+        double[][] inputMatrix = input.getUserMatrix(size, (size+1)); //store's user's input as matrix
+        // double[][] solutionsMatrix = input.getSolutionsMatrix(inputMatrix.length); // solutions matrix
+        double[][] finalMatrix = maths.RREF(inputMatrix);
+        System.out.println("This is the result:");
+        output.printMatrix(finalMatrix);
+        // output.rowReducedEchelon(finalMatrix);
+    }
+
+    public static void rowReducedEchelonOld(){ //5
+        Scanner in = new Scanner(System.in);
+	    System.out.print("Please input the number of rows in your matrix: ");
+        int size = in.nextInt();
+        in.nextLine(); // clears the \n character from input stream -_____-
         double[][] inputMatrix = input.getUserMatrix(size, size); //store's user's input as matrix
         double[][] solutionsMatrix = input.getSolutionsMatrix(inputMatrix.length); // solutions matrix
         double[][] inverseMatrix = maths.Inverse(inputMatrix);
