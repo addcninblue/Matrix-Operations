@@ -3,10 +3,15 @@
 ## Features
 This program can handle several matrix operations.
 It can compute:
+
 1. Scalar Multiplication
+
 2. Addition / Subtraction
+
 3. Determinant
+
 4. Multiplication
+
 5. Gauss-Jordan Elimination
 
 ## Methodology
