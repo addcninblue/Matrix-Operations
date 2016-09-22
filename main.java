@@ -2,7 +2,7 @@
  * This is a program that can compute
  * 1. Scalar Multiplication
  * 2. Addition / Subtraction
- * 3. Find determinant
+ * 3. Determinant
  * 4. Multiplication
  * 5. Gauss-Jordan Elimination
  * @author Addison Chan and Daniel Phan
