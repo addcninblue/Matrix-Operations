@@ -22,19 +22,19 @@ public final class output {
                     }
                     // System.out.print(finalMatrix[0][i]);
                     if(i == 0){
-                        System.out.println("\u2510"); //┐
+                        System.out.println("\u2510"); //top right
                     } else if (i== finalMatrix.length - 1){
-                        System.out.println("\u2518"); //┘
+                        System.out.println("\u2518"); //bottom right
                     } else {
-                        System.out.println("\u2502"); //│
+                        System.out.println("\u2502"); //middle
                     }
                     if (i == finalMatrix.length - 2){
-                        System.out.print("\u2514"); //└
+                        System.out.print("\u2514"); //bottom left
                     }
                 }
             }
             if (i < finalMatrix.length - 2){
-                System.out.print("\u2502"); //│
+                System.out.print("\u2502"); //middle
             }
         }
         // end print
@@ -46,11 +46,11 @@ public final class output {
             for(int column = 0; column < matrix[0].length ; column++){
                 if (column == 0){ //start of column
                     if (row == 0){
-                        System.out.print("\u250C"); //matrix top ┌
+                        System.out.print("\u250C"); //matrix top left
                     } else if (row == rows-1){
-                        System.out.print("\u2514"); //matrix bottom └
+                        System.out.print("\u2514"); //matrix bottom left
                     } else {
-                        System.out.print("\u2502"); //matrix middle │
+                        System.out.print("\u2502"); //matrix middle 
                     }
                 }
                 System.out.print(matrix[row][column]);
@@ -61,9 +61,9 @@ public final class output {
                     if (row == 0){
                         System.out.println("\u2510"); // 
                     } else if (row == rows-1){
-                        System.out.println("\u2518"); // ┘
+                        System.out.println("\u2518"); // bottom right
                     } else {
-                        System.out.println("\u2502"); // │
+                        System.out.println("\u2502"); // middle
                     }
                 }
             }
