@@ -21,3 +21,7 @@ This program first takes the input of the user's matrix. Then, it calculates the
 
 ## Installation
 To install, simply clone the respoitory, compile the java files, and run java main.
+
+##Authors
+Addison Chan
+Daniel Phan
