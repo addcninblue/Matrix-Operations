@@ -22,7 +22,7 @@ It can compute:
 7. This program uses the minors of each cell of input matrix and divides them each by the determinant of the original input matrix. Then, the resulting matrix is returned.
 
 ## Installation
-To install, simply clone the respoitory, compile the java files, and run java main.
+To install, simply clone the repository, compile the java files, and run java main.
 Ensure that javac is in your $PATH.
 
 Clone the file:
