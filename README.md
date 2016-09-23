@@ -21,9 +21,6 @@ It can compute:
 6. This program finds the inverse of the input matrix and multiplies it by the solutions matrix. Finally, it returns the result in a Row Reduced Echelon form.
 7. This program uses the minors of each cell of input matrix and divides them each by the determinant of the original input matrix. Then, the resulting matrix is returned.
 
-### Old method for Gauss-Jordan Elimination
-This program first takes the input of the user's matrix. Then, it calculates the inverse matrix of the system, and multiplies that by the solution matrix, which is returned via System.print() to the user.
-
 ## Installation
 To install, simply clone the respoitory, compile the java files, and run java main.
 Ensure that javac is in your $PATH.
