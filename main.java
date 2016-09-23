@@ -19,6 +19,7 @@ public class main {
             System.out.println("3. Find determinant");
             System.out.println("4. Multiplication");
             System.out.println("5. Gauss-Jordan Elimination");
+            System.out.println("6. Old Gauss-Jordan Elimination");
             System.out.print("Please choose one: ");
             int userInput = in.nextInt();
             switch(userInput){
@@ -37,9 +38,10 @@ public class main {
                 case(5): // Gauss-Jordan
                     rowReducedEchelon();
                     break;
+                case(6):
+                    rowReducedEchelonOld();
                 default: 
                     break;
-                    // System.out.print("Thanks for using our program!");
             }
             in.nextLine();
             System.out.print("Would you like to continue? \ny/n: ");
@@ -128,7 +130,7 @@ public class main {
         // output.rowReducedEchelon(finalMatrix);
     }
 
-    public static void rowReducedEchelonOld(){ //5
+    public static void rowReducedEchelonOld(){ //6
         Scanner in = new Scanner(System.in);
 	    System.out.print("Please input the number of rows in your matrix: ");
         int size = in.nextInt();
