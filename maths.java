@@ -73,7 +73,7 @@ public final class maths {
         for(int i = 0; i < matrix.length; i++) //"pivot" element index [i][i]
         {
 			matrix = RREFOrganize(matrix); 
-            if(matrix[i][i] <= 0.00000001) continue; 
+            if(Math.abs(matrix[i][i]) <= 0.00000001) continue; 
             for(int k = 0; k < matrix.length; k++) //going through each row
             {
                 if(k == i) continue;
