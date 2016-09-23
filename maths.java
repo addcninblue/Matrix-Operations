@@ -115,7 +115,7 @@ public final class maths {
             for(int k = 0; k < i; k++) //going through each column in the rows before i
             {
                 if((Math.abs(matrix[i][k]) <= 0.00000001 && 
-				Math.abs(matrix[k][k]) >= 0.00000001)|| Math.abs(matrix[k][i]) == 0) continue;
+				Math.abs(matrix[k][k]) >= 0.00000001)|| Math.abs(matrix[k][i]) <= 0.00000001) continue;
                 double[] temp = matrix[k]; //swap the rows
                 matrix[k] = matrix[i];
                 matrix[i] = temp;
