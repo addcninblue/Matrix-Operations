@@ -73,7 +73,7 @@ public final class maths {
         for(int i = 0; i < matrix.length; i++) //"pivot" element index [i][i]
         {
 			matrix = RREFOrganize(matrix); 
-           if(matrix[i][i] == 0) continue; 
+            if(matrix[i][i] <= 0.00000001) continue; 
             for(int k = 0; k < matrix.length; k++) //going through each row
             {
                 if(k == i) continue;
@@ -83,7 +83,7 @@ public final class maths {
                     double temp = multiplier*matrix[i][j]; //copy the matrix over//multiply elements
                     matrix[k][j] -= temp; //subtract
                 }
-				//output.printMatrix(matrix);
+				output.printMatrix(matrix);
             }
         }
         for(int i = 0; i < matrix.length; i++) //rows//divide by first nonzero for RREF
