@@ -4,7 +4,9 @@
  * 2. Addition / Subtraction
  * 3. Determinant
  * 4. Multiplication
- * 5. Gauss-Jordan Elimination
+ * 5. Gauss-Jordan Elimination by row operations
+ * 6. Gauss-Jordan Elimination by Inverse Matrix
+ * 7. Inverse of a matrix
  * @author Addison Chan and Daniel Phan
  * @version 2.0.0
  */ 
@@ -20,6 +22,7 @@ public class main {
             System.out.println("4. Multiplication");
             System.out.println("5. Gauss-Jordan Elimination");
             System.out.println("6. Old Gauss-Jordan Elimination");
+            System.out.println("7. Inverse");
             System.out.print("Please choose one: ");
             int userInput = in.nextInt();
             switch(userInput){
@@ -40,6 +43,8 @@ public class main {
                     break;
                 case(6):
                     rowReducedEchelonOld();
+                case(7):
+                    inverseMatrix();
                 default: 
                     break;
             }
@@ -140,5 +145,19 @@ public class main {
         double[][] inverseMatrix = maths.Inverse(inputMatrix);
         double[][] finalMatrix = maths.Multiplication(inverseMatrix, solutionsMatrix);
         output.rowReducedEchelon(finalMatrix);
+    }
+
+    public static void inverseMatrix(){ //7
+        Scanner in = new Scanner(System.in);
+	    System.out.print("Please input the number of rows in your matrix: ");
+        int size = in.nextInt();
+        in.nextLine(); // clears the \n character from input stream -_____-
+        double[][] inputMatrix = input.getUserMatrix(size, size); //store's user's input as matrix
+        if(maths.Determinant(inputMatrix) == 0){
+            System.out.println("No inverse matrix.");
+        } else {
+            double[][] finalMatrix = maths.Inverse(inputMatrix);
+            output.printMatrix(finalMatrix);
+        }
     }
 }
