@@ -53,7 +53,7 @@ public final class output {
                         System.out.print("\u2502"); //matrix middle 
                     }
                 }
-                System.out.print(Math.round(100.0*matrix[row][column]) / 100.0);
+                System.out.print(matrix[row][column]);
                 if (column != columns - 1) {
                     System.out.print(" ");
                 }
