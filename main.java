@@ -8,7 +8,7 @@
  * 6. Gauss-Jordan Elimination by Inverse Matrix
  * 7. Inverse of a matrix
  * @author Addison Chan and Daniel Phan
- * @version 2.0.0
+ * @version 2.0.2
  */ 
 
 import java.util.Scanner;
