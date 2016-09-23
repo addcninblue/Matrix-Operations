@@ -67,6 +67,9 @@ public final class output {
                         System.out.print("\u2502"); //matrix middle 
                     }
                 }
+                if(String.format(format[column], matrix[row][column]).contains("-0.00")){
+                    matrix[row][column] = 0;
+                }
                 System.out.print(String.format(format[column], matrix[row][column]));
                 if (column != columns - 1) {
                     System.out.print(" ");
