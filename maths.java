@@ -83,7 +83,7 @@ public final class maths {
                     double temp = multiplier*matrix[i][j]; //copy the matrix over//multiply elements
                     matrix[k][j] -= temp; //subtract
                 }
-				output.printMatrix(matrix);
+				//output.printMatrix(matrix);
             }
         }
         for(int i = 0; i < matrix.length; i++) //rows//divide by first nonzero for RREF
